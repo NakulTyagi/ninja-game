@@ -10,11 +10,11 @@
   
   .cell {
     display: inline-block;
-    width: 50%;
-    height: 50%;
+    width: 30px;
+    height: 30px;
     border: 2px solid rgb(172, 159, 143);
     vertical-align: top;
-    line-height: 50%;
+    line-height: 30px;
     text-align: center;
     color: white;
     font-weight: bold;
