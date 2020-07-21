@@ -1,0 +1,7 @@
+<div class="grid">
+    <div *ngFor="let column of grid" class="column">
+        <div *ngFor="let cell of column" class="cell" [ngClass]="'cell-' + cell.value">
+            {{ cell.value }}
+        </div>
+    </div>
+</div>
