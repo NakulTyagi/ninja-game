@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
     this.initialize();
     this.spawnCell(2);
     this.spawnCell(2);
+
   }
 
   @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent): void {
@@ -63,6 +64,27 @@ export class HomeComponent implements OnInit {
         event.preventDefault();
         return this.swipe('up');
       case 'ArrowDown':
+        event.preventDefault();
+        return this.swipe('down');
+    }
+  }
+  onSwipe(evt) {
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 'right' : 'left') : '';
+    const y = Math.abs(evt.deltaY) > 40 ? (evt.deltaY > 0 ? 'down' : 'up') : '';
+    this.swipe('left');
+    var eventText = x + y;
+    console.log(eventText);
+    switch (eventText) {
+      case 'left':
+        event.preventDefault();
+        return this.swipe('left');
+      case 'right':
+        event.preventDefault();
+        return this.swipe('right');
+      case 'up':
+        event.preventDefault();
+        return this.swipe('up');
+      case 'down':
         event.preventDefault();
         return this.swipe('down');
     }
