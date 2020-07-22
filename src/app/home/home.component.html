@@ -37,9 +37,15 @@
                     <tbody>
 
                         <tr *ngFor="let sco of scorelist,let i=index">
-                            <th *ngIf="i<10" scope="row">{{i+1}}</th>
+                            <th *ngIf="i<10 && scorelist.length!=0" scope="row">{{i+1}}</th>
                             <!-- <td *ngIf="i<10">Mark</td> -->
-                            <td *ngIf="i<10">{{sco}}</td>
+                            <td *ngIf="i<10 && scorelist.length!=0">{{sco}}</td>
+                        </tr>
+
+
+                        <tr *ngIf="scorelist.length==0">
+                            <th>1</th>
+                            <td>{{score}}</td>
                         </tr>
 
 
