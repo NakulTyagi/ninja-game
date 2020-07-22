@@ -36,10 +36,17 @@ const range = (from, to, callback) => {
 export class HomeComponent implements OnInit {
 
   grid: Cell[][] = [];
+  score = 0;
+  highscore = 0;
+  scorelist: number[] = [];
+  name;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.initialize();
 
+    this.initialize();
     this.spawnCell(2);
     this.spawnCell(2);
   }
@@ -98,6 +105,7 @@ export class HomeComponent implements OnInit {
       neighbour.value *= 2;
       neighbour.dirty = true;
       cell.value = undefined;
+      this.score += neighbour.value;
 
       return true;
     } else if (neighbour && !neighbour.value) {
@@ -159,5 +167,16 @@ export class HomeComponent implements OnInit {
   private get cells(): Cell[] {
     return this.grid
       .reduce((acc, val) => acc.concat(val));
+  }
+
+  restart() {
+
+    this.scorelist.push(this.score);
+
+    this.score = 0;
+    this.scorelist = this.scorelist.sort((n1, n2) => n2 - n1);;
+    this.highscore = this.scorelist[0];
+    console.log(this.scorelist);
+    this.ngOnInit();
   }
 }
