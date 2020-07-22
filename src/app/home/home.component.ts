@@ -194,7 +194,6 @@ export class HomeComponent implements OnInit {
   restart() {
 
     this.scorelist.push(this.score);
-
     this.score = 0;
     this.scorelist = this.scorelist.sort((n1, n2) => n2 - n1);;
     this.highscore = this.scorelist[0];

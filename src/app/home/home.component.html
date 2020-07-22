@@ -1,43 +1,58 @@
-<div class="row">
-    <div class="col-5" (swipe)="onSwipe($event)">
-        <div class="grid">
-            <div *ngFor="let column of grid" class="column">
-                <div *ngFor="let cell of column" class="cell" [ngClass]="'cell-' + cell.value">
-                    {{ cell.value }}
+<div class="container" (swipe)="onSwipe($event)">
+    <h1 style="text-align: center;font-size:4em;"><img width="20%"
+            src="https://img.freepik.com/free-vector/illustration-people-with-joystick_53876-37168.jpg?size=626&ext=jpg"
+            alt=""> 2048</h1>
+    <div class="row" style="margin-top: 8%;">
+        <div class="col-6">
+            <div class="grid">
+                <div *ngFor="let column of grid" class="column">
+                    <div *ngFor="let cell of column" class="cell" [ngClass]="'cell-' + cell.value">
+                        {{ cell.value }}
+                    </div>
                 </div>
-            </div>
-        </div><br>
-        <button class="btn btn-light " style="margin: 5%;" (click)="restart()"> Restart </button>
-
-    </div>
-    <div class="col-2 score">
-        <h1 *ngIf="highscore>=score">Score</h1>
-        <h1 *ngIf="score>highscore ">New High Score</h1> <br>
-        <h1> {{score}}</h1>
-    </div>
-    <div class="col-5">
-        <div class="leaderboard">
-            <table class="table">
-                <thead class="thead-rgb(172, 159, 143)" style="background-color:rgb(172, 159, 143)">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr *ngFor="let sco of scorelist,let i=index">
-                        <th *ngIf="i<10" scope="row">{{i+1}}</th>
-                        <td *ngIf="i<10">Mark</td>
-                        <td *ngIf="i<10">{{sco}}</td>
-                    </tr>
-
-
-                </tbody>
-            </table>
-
+            </div><br>
+            <button class="btn btn-light " style="margin: 5%;" (click)="restart()"> Restart </button>
 
         </div>
+        <div class="col-4 score" style="float: left; text-align: center;">
+            <h1 *ngIf="highscore>=score">Score</h1>
+            <h1 *ngIf="score>highscore ">New High Score</h1> <br>
+            <h1><img width="30%" src="https://image.freepik.com/free-vector/hand-with-clipboard_1284-4374.jpg" alt="">
+                {{score}}</h1><br>
+            <b *ngIf="score>highscore " class="text-primary">Wohooo ! You just set the new high score.</b>
+
+        </div>
+        <div class="col-2 ">
+
+            <div class="leaderboard">
+                <table class="table table-bordered">
+                    <thead class="thead-rgb(172, 159, 143)" style=" background: rgb(238, 162, 102);">
+                        <tr>
+
+                            <th scope="col">#</th>
+                            <!-- <th scope="col">Name</th> -->
+                            <th scope="col">High Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let sco of scorelist,let i=index">
+                            <th *ngIf="i<10" scope="row">{{i+1}}</th>
+                            <!-- <td *ngIf="i<10">Mark</td> -->
+                            <td *ngIf="i<10">{{sco}}</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-5" style="float: left;">
+
     </div>
 </div>
