@@ -1,7 +1,17 @@
-# Game
+# 2048 - Game
+
+![alt text](https://github.com/NakulTyagi/ninja-game/blob/master/src/assets/ninja-game.png)
+
+## Description
+
+2048 is an addictive number puzzle game based on simple addition. You can enjoy all fun of number games, cool math games, logic puzzle games, brain teaser, and mind blowing in this free super numbers puzzle.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
+## Getting Started
+Clone the repository ->
+Open the game directory - `cd ninja-game` ->
+Run `npm install`
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
