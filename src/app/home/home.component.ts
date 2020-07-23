@@ -38,7 +38,9 @@ export class HomeComponent implements OnInit {
   grid: Cell[][] = [];
   score = 0;
   highscore = 0;
-  scorelist: number[] = [];
+
+  scores = JSON.parse(localStorage.getItem('scores'));
+  // scorelist = this.scores.sort((n1, n2) => n2 - n1);
   name;
 
   constructor() {
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit {
     this.initialize();
     this.spawnCell(2);
     this.spawnCell(2);
-
+    console.log(this.scores);
   }
 
   @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent): void {
@@ -193,11 +195,13 @@ export class HomeComponent implements OnInit {
 
   restart() {
 
-    this.scorelist.push(this.score);
+    // this.scorelist.push(this.score);
+    this.scores.push(this.score);
     this.score = 0;
-    this.scorelist = this.scorelist.sort((n1, n2) => n2 - n1);;
-    this.highscore = this.scorelist[0];
-    console.log(this.scorelist);
+    this.scores = this.scores.sort((n1, n2) => n2 - n1);
+    localStorage.setItem('scores', JSON.stringify(this.scores));
+    this.highscore = this.scores[0];
+    console.log(this.scores);
     this.ngOnInit();
   }
 }

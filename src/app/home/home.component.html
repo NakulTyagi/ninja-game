@@ -2,7 +2,7 @@
     <h1 style="text-align: center;font-size:4em;"><img width="20%"
             src="https://img.freepik.com/free-vector/illustration-people-with-joystick_53876-37168.jpg?size=626&ext=jpg"
             alt=""> 2048</h1>
-    <div class="row" style="margin-top: 8%;">
+    <div class="row" style="margin-top: 5%;">
         <div class="col-6">
             <div class="grid">
                 <div *ngFor="let column of grid" class="column">
@@ -36,17 +36,18 @@
                     </thead>
                     <tbody>
 
-                        <tr *ngFor="let sco of scorelist,let i=index">
-                            <th *ngIf="i<10 && scorelist.length!=0" scope="row">{{i+1}}</th>
-                            <!-- <td *ngIf="i<10">Mark</td> -->
-                            <td *ngIf="i<10 && scorelist.length!=0">{{sco}}</td>
+                        <tr *ngFor="let sco of scores,let i=index">
+
+                            <th *ngIf="i<10">{{i+1}}</th>
+                            <td *ngIf="i<10">{{sco}}</td>
+
                         </tr>
 
-
+                        <!-- 
                         <tr *ngIf="scorelist.length==0">
                             <th>1</th>
                             <td>{{score}}</td>
-                        </tr>
+                        </tr> -->
 
 
                     </tbody>
