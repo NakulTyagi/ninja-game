@@ -38,20 +38,28 @@ export class HomeComponent implements OnInit {
   grid: Cell[][] = [];
   score = 0;
   highscore = 0;
-
-  scores = JSON.parse(localStorage.getItem('scores'));
-  // scorelist = this.scores.sort((n1, n2) => n2 - n1);
+  scorelist: any = [];
+  scores = this.scorelist;
   name;
+  local = JSON.parse(localStorage.getItem('scores'));
 
   constructor() {
   }
 
   ngOnInit(): void {
-
+    //   localStorage.setItem('scores', JSON.stringify(this.scorelist));
+    //   this.scores = JSON.parse(localStorage.getItem('scores'));
+    console.log(this.local);
     this.initialize();
     this.spawnCell(2);
     this.spawnCell(2);
     console.log(this.scores);
+    if (this.local == null) {
+      this.scores = this.scorelist;
+    }
+    else {
+      this.scores = JSON.parse(localStorage.getItem('scores'));
+    }
   }
 
   @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent): void {
@@ -195,10 +203,11 @@ export class HomeComponent implements OnInit {
 
   restart() {
 
-    // this.scorelist.push(this.score);
     this.scores.push(this.score);
-    this.score = 0;
     this.scores = this.scores.sort((n1, n2) => n2 - n1);
+    // this.scorelist = this.scores;
+    this.score = 0;
+    // this.scorelist = this.scores.sort((n1, n2) => n2 - n1);
     localStorage.setItem('scores', JSON.stringify(this.scores));
     this.highscore = this.scores[0];
     console.log(this.scores);

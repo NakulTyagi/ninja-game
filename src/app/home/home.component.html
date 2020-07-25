@@ -36,7 +36,7 @@
                     </thead>
                     <tbody>
 
-                        <tr *ngFor="let sco of scores,let i=index">
+                        <tr *ngFor="let sco of scores ,let i=index">
 
                             <th *ngIf="i<10">{{i+1}}</th>
                             <td *ngIf="i<10">{{sco}}</td>
